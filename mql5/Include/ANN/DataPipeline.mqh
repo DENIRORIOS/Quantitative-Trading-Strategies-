@@ -336,8 +336,7 @@ public:
     //+------------------------------------------------------------------+
     int CreateSequences(double &features[][], int n_bars, double &X[][][], double &y[])
     {
-        // Need sequence_length bars for input + 1 bar for target
-        int n_sequences = n_bars - m_sequence_length - 1;
+        int n_sequences = n_bars - m_sequence_length;
         if(n_sequences <= 0)
         {
             Print("Not enough bars to create sequences");
