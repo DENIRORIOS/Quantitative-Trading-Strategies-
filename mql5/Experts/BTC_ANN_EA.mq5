@@ -23,9 +23,9 @@
 #property strict
 
 // Include our custom classes
-#include <Include/ANN/NeuralNetwork.mqh>
-#include <Include/ANN/DataPipeline.mqh>
-#include <Include/ANN/TradeManager.mqh>
+#include <ANN/NeuralNetwork.mqh>
+#include <ANN/DataPipeline.mqh>
+#include <ANN/TradeManager.mqh>
 
 //+------------------------------------------------------------------+
 //| Input Parameters                                                  |
