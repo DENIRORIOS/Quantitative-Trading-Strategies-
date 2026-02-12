@@ -1,0 +1,20 @@
+# MQL5 compiled files
+*.ex5
+
+# Weight files (user-specific, can be large)
+*.bin
+
+# MetaEditor temporary files
+*.~mqh
+*.~mq5
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Log files
+*.log
