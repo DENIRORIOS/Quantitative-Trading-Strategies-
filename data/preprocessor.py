@@ -52,7 +52,7 @@ class DataPreprocessor:
         Args:
             df: DataFrame with features and target
             train_size: Proportion of data for training (default: 0.7)
-            step_size: Number of periods to roll forward (default: 30 days of 5m data)
+            step_size: Number of periods (samples) to roll forward (default: 30 periods = 2.5 hours of 5m data)
             
         Returns:
             List of (train_X, train_y, test_X, test_y) tuples

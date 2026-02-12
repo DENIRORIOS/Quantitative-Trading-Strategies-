@@ -28,7 +28,7 @@ class BTCDataFetcher:
         Fetch historical OHLCV data
         
         Args:
-            days: Number of days of historical data (default: 730 for 2 years)
+            days: Number of days of historical data (default: 730 for ~2 years)
             
         Returns:
             DataFrame with OHLCV data

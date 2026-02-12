@@ -114,7 +114,7 @@ def main():
         df = fetcher.load_data('btc_5m_data.csv')
     except FileNotFoundError:
         print("No existing data found. Fetching from exchange...")
-        df = fetcher.fetch_historical_data(days=730)  # 2 years
+        df = fetcher.fetch_historical_data(days=730)  # ~2 years
         fetcher.save_data(df, 'btc_5m_data.csv')
     
     print(f"Data shape: {df.shape}")

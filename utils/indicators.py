@@ -95,6 +95,8 @@ class TechnicalIndicators:
         
         # Calculate price returns for target variable
         df['returns'] = df['close'].pct_change()
+        # Note: shift(-1) looks into the future - this is intentional for creating training labels
+        # The model will learn to predict next bar's direction from current features
         df['target'] = (df['returns'].shift(-1) > 0).astype(int)  # 1 for up, 0 for down
         
         # Drop NaN values

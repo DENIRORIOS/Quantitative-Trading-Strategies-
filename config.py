@@ -28,8 +28,8 @@ MACD_SIGNAL = 9  # MACD signal period
 
 # Trading Strategy
 PREDICTION_THRESHOLD = 0.65  # Minimum prediction confidence (65%)
-POSITION_SIZE_MIN = 0.005  # Minimum position size (0.5% of portfolio)
-POSITION_SIZE_MAX = 0.01  # Maximum position size (1% of portfolio)
+POSITION_SIZE = 0.01  # Position size as % of portfolio per trade (1% = 0.01)
+# Note: Position size can be configured between 0.5-1% (0.005-0.01) for different risk levels
 INITIAL_CAPITAL = 10000  # Initial portfolio value
 
 # Retraining

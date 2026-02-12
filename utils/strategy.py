@@ -15,7 +15,7 @@ class TradingStrategy:
         
         Args:
             initial_capital: Initial portfolio value (default: $10,000)
-            position_size_pct: Position size as % of portfolio (default: 1% = 0.01)
+            position_size_pct: Position size as % of portfolio (range: 0.5-1%, default: 1% = 0.01)
             prediction_threshold: Minimum prediction probability (default: 0.65)
         """
         self.initial_capital = initial_capital
@@ -82,8 +82,8 @@ class TradingStrategy:
             self.portfolio_value -= trade['position_value']
             trade['action'] = 'BUY'
             
-        elif signal == 0 and len(self.positions) > 0:  # Sell signal
-            # Close oldest position
+        elif signal == 0 and len(self.positions) > 0:  # Sell signal with open positions
+            # Close oldest position (Note: Short selling is not implemented in this strategy)
             opened_position = self.positions.pop(0)
             profit = (price - opened_position['price']) * opened_position['position_size']
             self.portfolio_value += opened_position['position_value'] + profit
