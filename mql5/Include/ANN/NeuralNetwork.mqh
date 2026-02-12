@@ -13,6 +13,9 @@
 #property copyright "BTC Trading ANN"
 #property strict
 
+// Define M_PI constant for MQL5
+#define M_PI 3.14159265358979323846
+
 //+------------------------------------------------------------------+
 //| Neural Network Class                                             |
 //| Implements feedforward and backpropagation from scratch          |

@@ -132,7 +132,8 @@ public:
             if(PositionSelectByTicket(ticket))
                 return (ENUM_POSITION_TYPE)PositionGetInteger(POSITION_TYPE);
         }
-        return -1;
+        // Return POSITION_TYPE_BUY as default (should only be called when has_position is true)
+        return POSITION_TYPE_BUY;
     }
     
     //+------------------------------------------------------------------+
@@ -321,7 +322,21 @@ public:
             return true;
         }
         
-        return true;  // Assume market is open if we got here
+        // Check if current time is within trading session
+        int current_seconds = dt.hour * 3600 + dt.min * 60 + dt.sec;
+        int from_seconds = (int)(from % 86400);
+        int to_seconds = (int)(to % 86400);
+        
+        if(from_seconds < to_seconds)
+        {
+            // Normal session (e.g., 9:00 - 17:00)
+            return (current_seconds >= from_seconds && current_seconds <= to_seconds);
+        }
+        else
+        {
+            // Overnight session (e.g., 17:00 - 9:00 next day)
+            return (current_seconds >= from_seconds || current_seconds <= to_seconds);
+        }
     }
     
     //+------------------------------------------------------------------+

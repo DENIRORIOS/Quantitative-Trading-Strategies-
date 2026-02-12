@@ -226,9 +226,16 @@ void OnTick()
     g_trader.ExecuteTrade(prediction);
     
     // Show visual arrow if enabled
-    if(ShowVisuals && prediction > PredictionThreshold)
+    if(ShowVisuals)
     {
-        CreateSignalArrow(prediction, current_bar_time);
+        if(prediction > PredictionThreshold)
+        {
+            CreateSignalArrow(prediction, current_bar_time, true);  // Bullish
+        }
+        else if(prediction < (1.0 - PredictionThreshold))
+        {
+            CreateSignalArrow(prediction, current_bar_time, false); // Bearish
+        }
     }
 }
 
@@ -393,7 +400,7 @@ bool TrainModel()
 //+------------------------------------------------------------------+
 //| Create visual signal arrow on chart                              |
 //+------------------------------------------------------------------+
-void CreateSignalArrow(double prediction, datetime time)
+void CreateSignalArrow(double prediction, datetime time, bool is_bullish)
 {
     static datetime last_arrow_time = 0;
     if(time == last_arrow_time)
@@ -406,7 +413,7 @@ void CreateSignalArrow(double prediction, datetime time)
     ObjectDelete(0, arrow_name);
     
     // Create new arrow
-    if(prediction > PredictionThreshold)
+    if(is_bullish)
     {
         // Buy signal
         ObjectCreate(0, arrow_name, OBJ_ARROW_UP, 0, time, price);
@@ -414,6 +421,15 @@ void CreateSignalArrow(double prediction, datetime time)
         ObjectSetInteger(0, arrow_name, OBJPROP_WIDTH, 2);
         ObjectSetString(0, arrow_name, OBJPROP_TEXT, 
                        StringFormat("BUY %.1f%%", prediction * 100));
+    }
+    else
+    {
+        // Sell signal
+        ObjectCreate(0, arrow_name, OBJ_ARROW_DOWN, 0, time, price);
+        ObjectSetInteger(0, arrow_name, OBJPROP_COLOR, clrRed);
+        ObjectSetInteger(0, arrow_name, OBJPROP_WIDTH, 2);
+        ObjectSetString(0, arrow_name, OBJPROP_TEXT, 
+                       StringFormat("SELL %.1f%%", (1.0 - prediction) * 100));
     }
     
     last_arrow_time = time;
