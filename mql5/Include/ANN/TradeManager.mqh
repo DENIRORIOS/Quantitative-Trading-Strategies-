@@ -322,10 +322,11 @@ public:
             return true;
         }
         
-        // Check if current time is within trading session
+        // SymbolInfoSessionTrade returns time in seconds since midnight (0-86399)
+        // Convert current time to seconds since midnight
         int current_seconds = dt.hour * 3600 + dt.min * 60 + dt.sec;
-        int from_seconds = (int)(from % 86400);
-        int to_seconds = (int)(to % 86400);
+        int from_seconds = (int)from;
+        int to_seconds = (int)to;
         
         if(from_seconds < to_seconds)
         {

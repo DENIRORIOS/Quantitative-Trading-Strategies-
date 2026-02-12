@@ -226,6 +226,10 @@ void OnTick()
     g_trader.ExecuteTrade(prediction);
     
     // Show visual arrow if enabled
+    // Note: Asymmetric thresholds are intentional to create a "no trade" zone
+    // Bullish: prediction > 0.65 (65% confident up)
+    // Bearish: prediction < 0.35 (65% confident down, i.e., 35% up)
+    // Dead zone: 0.35-0.65 (not confident enough to trade)
     if(ShowVisuals)
     {
         if(prediction > PredictionThreshold)
