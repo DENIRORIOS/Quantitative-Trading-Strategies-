@@ -279,7 +279,7 @@ Check the Experts tab in MT5 Terminal for logs.
 ## Performance Considerations
 
 ### Training Time
-- Training on 8 weeks (80,000+ bars) takes approximately 2-10 minutes
+- Training on 8 weeks (~16,000 bars: 288 bars/day × 56 days) takes approximately 2-10 minutes
 - Depends on CPU speed and epoch count
 - Uses early stopping to avoid unnecessary epochs
 

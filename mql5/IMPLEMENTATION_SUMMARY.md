@@ -328,7 +328,7 @@ mql5/
 └── IMPLEMENTATION_SUMMARY.md        (this file) - Implementation details
 ```
 
-**Total Lines of Code:** ~2,840 lines of MQL5 code + ~770 lines of documentation
+**Total Lines of Code:** ~2,046 lines of MQL5 code + ~1,026 lines of documentation
 
 ---
 

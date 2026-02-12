@@ -123,10 +123,10 @@ int OnInit()
     Print("Initializing trade manager...");
     g_trader = new CTradeManager(symbol, PositionSizePct, PredictionThreshold, MagicNumber);
     
-    // Set up weekly timer for retraining (604800 seconds = 7 days)
+    // Set up timer for retraining check (check every minute)
     if(EnableWeeklyRetrain)
     {
-        EventSetTimer(60);  // Check every minute for retraining
+        EventSetTimer(60);  // 60 seconds = 1 minute
         Print("Weekly retraining enabled (checking every minute)");
     }
     
@@ -243,7 +243,7 @@ void OnTimer()
     // Check if a week has passed since last retraining
     datetime current_time = TimeCurrent();
     int seconds_since_retrain = (int)(current_time - g_last_retrain_time);
-    int seconds_per_week = 604800;  // 7 days
+    int seconds_per_week = 7 * 24 * 60 * 60;  // 7 days × 24 hours × 60 minutes × 60 seconds
     
     if(seconds_since_retrain >= seconds_per_week)
     {

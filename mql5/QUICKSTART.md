@@ -143,8 +143,8 @@ When weekly retraining triggers, you'll see:
 ```
 Starting model training...
 Fetching 8 weeks of historical data
-Training samples: 8000
-Test samples: 3500
+Training samples: 11000
+Test samples: 4700
 Epoch 1/50 - Train Loss: 0.6931, Val Loss: 0.6925, Val Accuracy: 52.00%
 Epoch 5/50 - Train Loss: 0.6523, Val Loss: 0.6480, Val Accuracy: 58.50%
 ...

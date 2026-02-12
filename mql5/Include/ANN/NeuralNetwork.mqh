@@ -235,8 +235,8 @@ public:
     //+------------------------------------------------------------------+
     double RandomNormal()
     {
-        double u1 = MathRand() / 32767.0;  // Uniform [0,1]
-        double u2 = MathRand() / 32767.0;
+        double u1 = MathRand() / 32768.0;  // Uniform [0,1] - divide by 32768 to include 1.0
+        double u2 = MathRand() / 32768.0;
         if(u1 < 1e-10) u1 = 1e-10;  // Avoid log(0)
         return MathSqrt(-2.0 * MathLog(u1)) * MathCos(2.0 * M_PI * u2);
     }
@@ -288,7 +288,7 @@ public:
         {
             // Binary mask: 1/keep_prob if kept, 0 if dropped
             // Scale by 1/keep_prob to maintain expected value during inference
-            mask[i] = (MathRand() / 32767.0 > dropout_rate) ? (1.0 / keep_prob) : 0.0;
+            mask[i] = (MathRand() / 32768.0 > dropout_rate) ? (1.0 / keep_prob) : 0.0;
         }
     }
     

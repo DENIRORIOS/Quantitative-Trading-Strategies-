@@ -449,8 +449,8 @@ public:
                              double &train_X[][][], double &train_y[],
                              double &test_X[][][], double &test_y[])
     {
-        // Calculate bars needed (5-minute bars: 288 per day, ~2016 per week)
-        int bars_per_week = 288 * 7;  // 5-minute bars in a week
+        // Calculate bars needed (5-minute bars for 24/7 crypto markets: 288 per day, 2016 per week)
+        int bars_per_week = 288 * 7;  // 5-minute bars in a week (24/7 trading)
         int bars_needed = bars_per_week * weeks + m_sequence_length + 50;
         
         Print("Fetching ", bars_needed, " bars for ", weeks, " weeks of training data");
